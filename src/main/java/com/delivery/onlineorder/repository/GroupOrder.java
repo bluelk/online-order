@@ -7,24 +7,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 @Entity
-public class Order {
+public class GroupOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer orderId;
 	private String status;
 
 	//	@OneToMany
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "event")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "groupOrder")
 	@org.hibernate.annotations.ForeignKey(name = "none")
 	private List<PersonalOrder> personalOrders;
 
-	public Order() {
+	public GroupOrder() {
 	}
 
-	public Order(String status, List<PersonalOrder> personalOrders) {
+	public GroupOrder(String status, List<PersonalOrder> personalOrders) {
 		this.status = status;
 		this.personalOrders = personalOrders;
 	}

@@ -36,20 +36,20 @@ public class PersonalOrder {
 	@JsonIgnore
 	@NotFound(action = NotFoundAction.IGNORE)
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "event_id", nullable = false,
+	@JoinColumn(name = "group_order_id", nullable = false,
 			foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
-	private Order order;
+	private GroupOrder groupOrder;
 
 	public PersonalOrder() {
 	}
 
-	public PersonalOrder(String name, String dish, String drink, Integer type, String status, Order order) {
+	public PersonalOrder(String name, String dish, String drink, Integer type, String status, GroupOrder groupOrder) {
 		this.name = name;
 		this.dish = dish;
 		this.drink = drink;
 		this.type = type;
 		this.status = status;
-		this.order = order;
+		this.groupOrder = groupOrder;
 	}
 
 	public Integer getPersonalOrderId() {
@@ -100,12 +100,12 @@ public class PersonalOrder {
 		this.status = status;
 	}
 
-	public Order getOrder() {
-		return order;
+	public GroupOrder getGroupOrder() {
+		return groupOrder;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setGroupOrder(GroupOrder groupOrder) {
+		this.groupOrder = groupOrder;
 	}
 }
 
