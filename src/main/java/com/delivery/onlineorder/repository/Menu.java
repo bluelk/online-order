@@ -9,7 +9,7 @@ import javax.persistence.Lob;
 @Entity
 public class Menu {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer menuId;
 
 	private String name;

@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 public class GroupOrder {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer orderId;
 	private String status;
 

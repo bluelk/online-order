@@ -18,7 +18,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class PersonalOrder {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer personalOrderId;
 
 	private String name;

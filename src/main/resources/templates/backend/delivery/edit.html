@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Create Menu</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/backend/css/style.css}"/>-->
+    <link rel="stylesheet" type="text/css" href="../../../static/backend/css/style.css"/>
+
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+</head>
+<body>
+<form th:action="edit" method="post">
+    Name:
+    <input type="text" name="name"/>
+
+    <p>
+        <button type="button" id="addDish">Add new dish</button>
+    </p>
+    <table id="dishTable">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>dish</th>
+            <th>price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                1
+            </td>
+            <td>
+                <input type="text" name="dishName"/>
+            </td>
+            <td>
+                <input type="text" name="dishPrice"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p>
+        <button type="button" id="addDrink">Add new drink</button>
+    </p>
+    <table id="drinkTable">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>drink</th>
+            <th>price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                1
+            </td>
+            <td>
+                <input type="text" name="drinkName"/>
+            </td>
+            <td>
+                <input type="text" name="drinkPrice"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <input type="submit" value="Create"/>
+</form>
+
+<script>
+    $(document).ready(function () {
+        var dishTable = $('#dishTable').DataTable();
+        var drinkTable = $('#drinkTable').DataTable();
+        var dishCounter = 1;
+        var drinkCounter = 1;
+
+        $('#addDish').on('click', function () {
+            dishCounter ++;
+            dishTable.row.add([
+                dishCounter,
+                "<input type=\"text\" name=\"dishName\"/>",
+                "<input type=\"text\" name=\"dishPrice\"/>"
+            ]).draw(false);
+        });
+
+
+        $('#addDrink').on('click', function () {
+            drinkCounter ++;
+            drinkTable.row.add([
+                drinkCounter,
+                "<input type=\"text\" name=\"drinkName\"/>",
+                "<input type=\"text\" name=\"drinkPrice\"/>"
+            ]).draw(false);
+        });
+    });
+</script>
+</body>
+</html>

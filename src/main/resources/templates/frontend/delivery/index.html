@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Lunch Order</title>
+</head>
+<body>
+
+<form th:action="order" method="get">
+    <input type="submit" value="Make new order"/>
+</form>
+
+<h3>Current order(s):</h3>
+<th:block th:if="(${currentOrders != null})">
+    <table th:each="currentOrder : *{currentOrders}">
+        <tr th:each="meal : ${currentOrder.meals}">
+            <td>
+                <th:block th:text="${meal.dish.name}"></th:block>
+            </td>
+            <td>
+                <th:block th:text="${meal.drink.name}"></th:block>
+            </td>
+            <td>
+                <th:block th:text="${meal.price}"></th:block>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:text="${currentOrder.totalPrice}"></th:block>
+            </td>
+        </tr>
+        <form th:action="${'order/' + ${currentOrder.id}}" method="get">
+            <input type="submit" value="Edit"/>
+        </form>
+    </table>
+</th:block>
+
+
+<h3>Placed order(s):</h3>
+<th:block th:if="(${placedOrders != null})">
+    <table th:each="placedOrder : *{placedOrders}">
+        <tr th:each="meal : ${placedOrder.meals}">
+            <td>
+                <th:block th:text="${meal.dish.name}"></th:block>
+            </td>
+            <td>
+                <th:block th:text="${meal.drink.name}"></th:block>
+            </td>
+            <td>
+                <th:block th:text="${meal.price}"></th:block>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:text="${placedOrder.totalPrice}"></th:block>
+            </td>
+        </tr>
+    </table>
+</th:block>
+</body>
+</html>

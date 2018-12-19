@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Lunch Order</title>
+</head>
+<body>
+<th:block th:if="${order == null}">
+    <th:block th:if="${menus != null}">
+        <ul>
+            <li th:each="menu : *{menus}">
+                <a href="javascript:void(0);">
+                    <th:block th:text="${menu.name}"></th:block>
+                </a>
+            </li>
+        </ul>
+        <table th:each="menu : *{menus}">
+            <tr th:each="dish : ${menu.dishes}">
+                <td>
+                    <th:block th:text="${dish.name}"></th:block>
+                    <input type="checkbox" name="dish"/>
+                </td>
+            </tr>
+            <tr th:each="drink : *{drinks}">
+                <td>
+                    <th:block th:text="${drink.name}"></th:block>
+                    <input type="checkbox" name="drink"/>
+                </td>
+            </tr>
+        </table>
+    </th:block>
+</th:block>
+<th:block th:if="(${menu != null})">
+    <table th:each="placedOrder : *{placedOrders}">
+        <tr th:each="meal : ${placedOrder.meals}">
+            <td>
+                <th:block th:text="${meal.dish.name}"></th:block>
+            </td>
+            <td>
+                <th:block th:text="${meal.drink.name}"></th:block>
+            </td>
+            <td>
+                <th:block th:text="${meal.price}"></th:block>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <th:block th:text="${placedOrder.totalPrice}"></th:block>
+            </td>
+        </tr>
+    </table>
+</th:block>
+</body>
+</html>

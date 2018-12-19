@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Menu List</title>
+</head>
+<body>
+<form th:action="@{'delivery/create'}" method="get">
+    <input type="submit" value="Create new menu"/>
+</form>
+<h3>Existing Menu(s):</h3>
+<table th:each="menu: *{menus}">
+    <tr>
+        <td>
+            <th:block th:text="${menu.name}"></th:block>
+        </td>
+        <td>
+            <th:block th:text="${menu.dishes}"></th:block>
+        </td>
+        <td>
+            <th:block th:text="${menu.drinks}"></th:block>
+        </td>
+        <form th:action="@{'delivery/edit/' + ${menu.menuId}}" method="get">
+            <input type="submit" value="Create new menu"/>
+        </form>
+    </tr>
+</table>
+</body>
+</html>
